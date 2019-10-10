@@ -14,3 +14,20 @@ Guided project for **Web Auth III** Module.
 - [ ] type `npm run server` to start the API.
 
 Please follow along as the instructor adds support for `JSON Web Tokens (JWT)` to the API.
+
+## Install env
+- install dotenv library
+```bash
+npm install dotenv
+yarn add dotenv
+```
+- Import the dotenv library in server.js
+```js
+require('dotenv').config();
+```
+- Create env file
+
+## Install JSON web token
+```bash
+npm install jsonwebtoken
+```

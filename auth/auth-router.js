@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
+const jwt = requrie('jsonwebtoken');
 
 const Users = require('../users/users-model.js');
 
@@ -11,6 +12,7 @@ router.post('/register', (req, res) => {
 
   Users.add(user)
     .then(saved => {
+      // a jwt should be generated
       res.status(201).json(saved);
     })
     .catch(error => {
@@ -36,5 +38,22 @@ router.post('/login', (req, res) => {
       res.status(500).json(error);
     });
 });
+
+function generateToken(user) {
+  // need - header, payload and verify signature && user metadata and secret
+  // // payload -> username, id, roles, exp date 
+  const payload = {
+    sub: user.id,
+    username: user.usernmae,
+  };
+  const options = {
+    expiresIn: '1d'
+  }
+  // // v signature -> a secret
+
+
+  return jwt.sign(payload, process.env.JWT_SECRET, options);
+  // to use env, need to put `process.env.env-var-name`
+}
 
 module.exports = router;
