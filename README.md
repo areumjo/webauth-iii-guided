@@ -31,3 +31,8 @@ require('dotenv').config();
 ```bash
 npm install jsonwebtoken
 ```
+## Migrate data
+```bash
+knex migrate:make add-roles
+knex migrate:latest
+```
